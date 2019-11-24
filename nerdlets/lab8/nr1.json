@@ -1,0 +1,13 @@
+{
+    "schemaType": "NERDLET",
+    "id": "lab8",
+    "displayName": "Lab8: 3rd Party",
+    "description": "This is the Nerdlet that you will build in Lab 8",
+    "entities": [
+        {
+            "domain": "BROWSER",
+            "type": "APPLICATION"
+        }
+    ],
+    "actionCategory": "monitor"
+}

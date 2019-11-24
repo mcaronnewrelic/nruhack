@@ -1,0 +1,21 @@
+body{
+    text-align: center;
+    margin: 20px;
+}
+.labcard {
+    margin: 30px;
+    clear: left;
+    Button {
+        float: left;
+        margin:5px;
+    }
+    h3 {
+        text-indent: 10px;
+    }
+    p {
+        text-indent: 20px;
+    }
+}
+.labcard:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}

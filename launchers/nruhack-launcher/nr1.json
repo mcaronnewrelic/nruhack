@@ -1,0 +1,7 @@
+{
+    "schemaType": "LAUNCHER",
+    "id": "nruhack-launcher",
+    "description": "This is where it's all at!",
+    "displayName": "Show me the money",
+    "rootNerdletId": "listalllabs"
+}

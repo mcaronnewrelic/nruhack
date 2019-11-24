@@ -1,0 +1,20 @@
+@import '~leaflet/dist/leaflet.css';
+@import '../../components/summary-bar/styles.css';
+h1, h2 {
+  width: fit-content;
+  margin: 10px auto;
+}
+.details {
+  h1 {
+    margin: 10px;
+  }
+  margin: 10px;
+}
+.chart {
+  padding: 10px;
+  height: 300px;
+}
+.containerMap {
+  width: 100%;
+  z-index: 0;
+}

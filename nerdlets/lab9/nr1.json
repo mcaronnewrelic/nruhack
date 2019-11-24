@@ -1,0 +1,13 @@
+{
+    "schemaType": "NERDLET",
+    "id": "lab9",
+    "displayName": "Lab9",
+    "description": "",
+        "entities": [
+            {
+                "domain": "BROWSER",
+                "type": "APPLICATION"
+            }
+        ],
+        "actionCategory": "monitor"
+}
