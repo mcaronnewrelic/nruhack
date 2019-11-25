@@ -12,7 +12,6 @@ export default class MyNerdlet extends React.Component {
     }
 
     _renderTable(data) {
-        console.debug(JSON.stringify(data));
         const headings = Object.keys(data[0]).filter(k => k != '__typename' && k != 'id' && k != 'tags' && k != 'reporting');
         return <table className="table">
             <tbody>
@@ -28,11 +27,15 @@ export default class MyNerdlet extends React.Component {
                     </tr>
                 }
             </tbody>
-        </table>
+            </table>
     }
 
     render() {
-        return (<Stack fullWidth directionType={Stack.DIRECTION_TYPE.VERTICAL}>
+        return (<React.Fragment>
+                <HeadingText>
+                    Lab 5: Using NR1 NerdGraph components
+                </HeadingText>
+            <Stack fullWidth directionType={Stack.DIRECTION_TYPE.VERTICAL}>
             <StackItem className="container">
                 <NerdGraphQuery query={`{actor {accounts {id name}}}`}>
                     {({ loading, error, data }) => {
@@ -125,6 +128,6 @@ export default class MyNerdlet extends React.Component {
                     }}
                 </EntityCountQuery>
             </StackItem>
-        </Stack>);
+        </Stack></React.Fragment>);
     }
 }

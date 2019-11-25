@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, GridItem, Stack, StackItem, ChartGroup, AreaChart, BarChart, LineChart, TableChart, PieChart, Button, HeadingText, TextField, Modal, Toast } from 'nr1';
+import { Grid, GridItem, Stack, StackItem, ChartGroup, AreaChart, BarChart, LineChart, TableChart, PieChart, Button, HeadingText, TextField, Modal, Toast, BlockText } from 'nr1';
 
 export default class Lab3Nerdlet extends React.Component {
     static propTypes = {
@@ -62,6 +62,9 @@ export default class Lab3Nerdlet extends React.Component {
         const throughput = `SELECT count(*) as 'throughput' FROM Transaction TIMESERIES`;
         const transaction_apdex_by_appname = `SELECT count(*) as 'transaction', apdex(duration) as 'apdex' FROM Transaction limit 25`;
         return <React.Fragment>
+            <HeadingText>
+                Lab 3: Grids, Stacks, and UI components
+            </HeadingText>
             {this.state.showToast &&
                 <Toast
                     type={this.state.toastType}
@@ -70,8 +73,49 @@ export default class Lab3Nerdlet extends React.Component {
                     onHideEnd={() => { this.setState({ showToast: false }) }}
                 />
             }
+            <BlockText style={{ margin: 15 }}>This lab starts with a look at the grid layout</BlockText>
+            <Grid fullWidth>
+                <GridItem
+                    columnSpan={6}
+                    style={{ backgroundColor: "#FF0000" }}
+                >
+                    Six Column Grid Item
+            </GridItem>
+            <GridItem
+                    columnSpan={4}
+                    style={{ backgroundColor: "#00FF00" }}
+                >
+                    Four Column Grid Item
+            </GridItem>
+            </Grid>
+            <BlockText style={{margin: 15}}>The lab continues with an exploration of a stack component</BlockText>
+            <Stack columnSpan={8}
+                fullWidth
+                horizontalType={Stack.HORIZONTAL_TYPE.FILL}
+                directionType={Stack.DIRECTION_TYPE.VERTICAL}>
+                <StackItem>
+                    <Stack
+                        fullWidth
+                        directionType={Stack.DIRECTION_TYPE.HORIZONTAL}
+                        gapType={Stack.GAP_TYPE.NORMAL}>
+                        <StackItem grow={true}>
+                            <div className="gry-div">Item 1: grows</div>
+                        </StackItem>
+                        <StackItem grow={true}>
+                            <div className="gry-div">Item 2: grows</div>
+                        </StackItem>
+                        <StackItem>
+                            <div className="gry-div">Item 3: Now this one doesn't grow</div>
+                        </StackItem>
+                    </Stack>
+                </StackItem>
+                <StackItem style={{ backgroundColor: 'blue' }}>
+                    <div className="gry">Item 4: here too</div>
+                </StackItem>
+            </Stack>
+            <BlockText style={{ margin: 15 }}>Click the button to apply the Host Facet and see the Toast</BlockText>
             <ChartGroup>
-                <Grid className="grid">
+                <Grid className="lab3grid">
                     <GridItem
                         columnSpan={8}>
                         <form onSubmit={this.onSubmit}>

@@ -11,24 +11,38 @@ export default class LabButton extends Component {
     }
 
     openDetails = (e, lab) => {
-        const labToExclude = ['lab1','lab2', 'lab3', 'lab5'];
-        var urlState = { entityGuid: "MTAzODI4N3xBUE18QVBQTElDQVRJT058MTEwNzQ2NDc"}
-        if (labToExclude.includes(lab.labName)) {
-            urlState = { entityGuid: "" }
+        //Some labs only work with an Entity, this is a hack
+        //Browse to an Entity to see the navigation integration
+        const labsToAddFakeEntity = ['lab7', 'lab8', 'lab9'];
+        //resetting the state, just in case
+        var urlState = { entityGuid: ""}
+        if (labsToAddFakeEntity.includes(lab.labName)) {
+            urlState = { entityGuid: "MTAzODI4N3xBUE18QVBQTElDQVRJT058MTEwNzQ2NDc" }
         }
-        navigation.openNerdlet({
-            id: e.target.id,
-            urlState
-        });
+        //this is just to demonstrate the multiple ways that Nerdlets can be opened. StackedNerdlets are useful when you don't need access to the time picker.
+        switch (lab.labName)
+        {
+            case 'lab1':
+                navigation.openStackedNerdlet({
+                    id: e.target.id,
+                    urlState
+                });
+                break;
+            default:
+                navigation.openNerdlet({
+                    id: e.target.id,
+                    urlState
+                });
+        }
     }
 
     render() {
         const { labName, labDescription, labTitle } = this.props;
         return (
-            <div className="labcard">
-            <button
-                id={labName}
-                onClick={(e) => { this.openDetails(e,{labName}); }} >
+            <div className="labcard" >
+                <button id={labName}
+                    onClick={(e) => { this.openDetails(e, { labName }); }}
+                 >
                 {labName}
             </button >
                 <h3>{labTitle}</h3>
