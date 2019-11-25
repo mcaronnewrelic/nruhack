@@ -6,6 +6,7 @@ import { Tabs, TabsItem, Spinner, Stack, StackItem, NrqlQuery, navigation, AutoS
 import { CircleMarker, Map, TileLayer } from 'react-leaflet';
 import SummaryBar from '../../components/summary-bar';
 import JavaScriptErrorSummary from './javascript-error-summary';
+import Details from '../details/index'
 
 const COLORS = [
     "#2dc937",
@@ -31,14 +32,15 @@ export default class lab8 extends React.Component {
         return COLORS[value];
     }
 
-    openDetails(pt, accountId) {
+    openDetails(pt, entity) {
+        console.log(pt);
         navigation.openStackedNerdlet({
             id: 'details',
             urlState: {
                 regionCode: pt.name[0],
                 countryCode: pt.name[1],
-                appName: this.state.entity.name,
-                accountId
+                appName: entity.name,
+                accountId: entity.accountId
             }
         });
     }

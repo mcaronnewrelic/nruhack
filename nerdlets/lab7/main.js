@@ -6,7 +6,6 @@ export default class lab7 extends React.Component {
 
     constructor(props) {
         super(props);
-        console.debug(props); //eslint-disable-line
     }
 
     render() {
@@ -15,15 +14,17 @@ export default class lab7 extends React.Component {
                 <NerdletStateContext.Consumer>
                     {(nerdletUrlState) => (
                         <React.Fragment>
-                            
-                            <HeadingText><Tooltip
+                            <HeadingText>
+                                <Tooltip
                                 text="Notice the Forecast data (generated)"
-                                placementType={Tooltip.PLACEMENT_TYPE.BOTTOM}
-                            >*</Tooltip>Lab 7: Passing custom data to a Chart component</HeadingText>
-                            
+                                placementType={Tooltip.PLACEMENT_TYPE.BOTTOM}>
+                                *
+                                </Tooltip>
+                                Lab 7: Passing custom data to a Chart component
+                            </HeadingText>
                         <EntityByGuidQuery entityGuid={nerdletUrlState.entityGuid}>
                             {({ data, loading, error }) => {
-                                console.log("EntityByGuidQuery", [loading, data, error]); //eslint-disable-line
+                                //console.debug("EntityByGuidQuery", [loading, data, error]); //eslint-disable-line
                                 if (loading) {
                                     return <Spinner fillContainer />;
                                 }

@@ -17,6 +17,8 @@ export default class LabButton extends Component {
         //resetting the state, just in case
         var urlState = { entityGuid: ""}
         if (labsToAddFakeEntity.includes(lab.labName)) {
+            //TODO - this is a fixed Entity in the NRU account to make demonstration go easier, but don't neglect to show the integration on the Browser/Service view.
+            //You may need to change this to an EntityId that you have access to and which is also a Browser application with javascript errors, etc.
             urlState = { entityGuid: "MTAzODI4N3xBUE18QVBQTElDQVRJT058MTEwNzQ2NDc" }
         }
         //this is just to demonstrate the multiple ways that Nerdlets can be opened. StackedNerdlets are useful when you don't need access to the time picker.
