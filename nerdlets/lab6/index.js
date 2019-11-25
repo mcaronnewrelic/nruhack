@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dropdown, DropdownItem, Spinner, Stack, StackItem, BillboardChart, PieChart, NerdGraphQuery, PlatformStateContext } from 'nr1';
+import { HeadingText, Dropdown, DropdownItem, Spinner, Stack, StackItem, BillboardChart, PieChart, NerdGraphQuery, PlatformStateContext } from 'nr1';
 
 export default class MyNerdlet extends React.Component {
 
@@ -87,7 +87,11 @@ export default class MyNerdlet extends React.Component {
         if (accounts) {
             return <PlatformStateContext.Consumer>
                 {(platformUrlState) => {
-                    return <Stack
+                    return <React.Fragment>
+<HeadingText>
+    Lab 6: GraphQL and Nerdlets
+</HeadingText>
+                    <Stack
                         fullWidth
                         horizontalType={Stack.HORIZONTAL_TYPE.FILL}
                         gapType={Stack.GAP_TYPE.EXTRA_LOOSE}
@@ -127,6 +131,7 @@ export default class MyNerdlet extends React.Component {
                             </StackItem>
                         }
                     </Stack>
+                    </React.Fragment>
                 }}
             </PlatformStateContext.Consumer>
         } else {

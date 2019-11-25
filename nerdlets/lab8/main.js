@@ -78,11 +78,9 @@ export default class lab8 extends React.Component {
                                                         accountId={accountId}
                                                         query={`SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView WHERE appName = '${entity.name}' facet regionCode, countryCode SINCE ${durationInMinutes} MINUTES AGO limit 2000`}>
                                                         {results => {
-                                                            console.debug(results);
                                                             if (results.loading) {
                                                                 return <Spinner />
                                                             } else {
-                                                                console.debug(results.data.facets);
                                                                 return <Map
                                                                     className="containerMap"
                                                                     style={{ height: `${height - 125}px` }}
