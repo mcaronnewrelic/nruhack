@@ -54,7 +54,7 @@ export default class MyNerdlet extends React.Component {
             <StackItem className="container">
                 <NerdletStateContext.Consumer>
                     {(nerdletUrlState) => {
-                        return <EntityByGuidQuery entityGuid={nerdletUrlState.entityGuid}>
+                        return <EntityByGuidQuery entityGuid='MTAzODI4N3xBUE18QVBQTElDQVRJT058MTEwNzQ2NDc'>
                             {({ loading, error, data }) => {
                                 console.debug([loading, data, error]); //eslint-disable-line
                                 if (loading) {
@@ -63,7 +63,7 @@ export default class MyNerdlet extends React.Component {
                                 if (error) {
                                     return <HeadingText>{error.message}</HeadingText>;
                                 }
-                                return <Fragment className="fragment">
+                                return <Fragment>
                                     <HeadingText>Entity by ID</HeadingText>
                                     {this._renderTable(data.entities)}
                                 </Fragment>

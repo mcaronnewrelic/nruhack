@@ -1,6 +1,6 @@
 import React from 'react';
-import { Spinner, HeadingText, EntityByGuidQuery, PlatformStateContext, NerdletStateContext } from 'nr1';
-import MyNerdlet from './main';
+import { AutoSizer, Spinner, HeadingText, EntityByGuidQuery, PlatformStateContext, NerdletStateContext } from 'nr1';
+import Lab9 from './main';
 
 export default class Wrapper extends React.PureComponent {
 
@@ -22,14 +22,17 @@ export default class Wrapper extends React.PureComponent {
                                     return <BlockText>{error.message}</BlockText>
                                 }
                                 const entity = data.entities[0];
-                                return <MyNerdlet
-                                    launcherUrlState={platformUrlState}
-                                    nerdletUrlState={nerdletUrlState}
-                                    height={height}
-                                    width={width}
-                                    entity={entity}
-                                />
-                            }}
+                                return (<AutoSizer>
+                                    {({ width, height }) => (
+                                    <Lab9
+                                        launcherUrlState={platformUrlState}
+                                        nerdletUrlState={nerdletUrlState}
+                                        height={height}
+                                        width={width}
+                                        entity={entity}/>
+                                    )}
+                                </AutoSizer>
+                            )}}
                         </EntityByGuidQuery>)
                     }}
                 </NerdletStateContext.Consumer>

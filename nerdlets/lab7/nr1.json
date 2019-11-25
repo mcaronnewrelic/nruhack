@@ -2,5 +2,12 @@
     "schemaType": "NERDLET",
     "id": "lab7",
     "displayName": "Lab7",
-    "description": ""
+    "description": "",
+        "entities": [
+            {
+                "domain": "BROWSER",
+                "type": "APPLICATION"
+            }
+        ],
+        "actionCategory": "monitor"
 }

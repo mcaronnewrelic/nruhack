@@ -4,7 +4,7 @@ import { LineChart, TableChart, Grid, GridItem, HeadingText, Button, Icon, UserS
 import { distanceOfTimeInWords } from './utils';
 import AddEntityModal from './add-entity-modal';
 
-export default class MyNerdlet extends React.Component {
+export default class lab9 extends React.Component {
 
     static propTypes = {
         nerdletUrlState: PropTypes.object.isRequired,

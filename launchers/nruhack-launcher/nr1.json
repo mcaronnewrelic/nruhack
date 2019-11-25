@@ -1,7 +1,7 @@
 {
     "schemaType": "LAUNCHER",
     "id": "nruhack-launcher",
-    "description": "This is where it's all at!",
-    "displayName": "Show me the money",
+    "description": "Contains a collection of Nerdlets that represent the finished state of the Lab Exercises",
+    "displayName": "Completed Labs",
     "rootNerdletId": "listalllabs"
 }

@@ -5,7 +5,7 @@ body{
 .labcard {
     margin: 30px;
     clear: left;
-    Button {
+    button {
         float: left;
         margin:5px;
     }
@@ -17,5 +17,5 @@ body{
     }
 }
 .labcard:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(111, 189, 92, 0.2);
 }

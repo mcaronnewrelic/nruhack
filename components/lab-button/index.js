@@ -10,9 +10,15 @@ export default class LabButton extends Component {
         labTitle: PropTypes.string
     }
 
-    openDetails = (e) => {
-        navigation.replaceNerdlet({
-            id: e.target.innerHTML
+    openDetails = (e, lab) => {
+        const labToExclude = ['lab1','lab2', 'lab3', 'lab5'];
+        var urlState = { entityGuid: "MTAzODI4N3xBUE18QVBQTElDQVRJT058MTEwNzQ2NDc"}
+        if (labToExclude.includes(lab.labName)) {
+            urlState = { entityGuid: "" }
+        }
+        navigation.openNerdlet({
+            id: e.target.id,
+            urlState
         });
     }
 
@@ -20,12 +26,11 @@ export default class LabButton extends Component {
         const { labName, labDescription, labTitle } = this.props;
         return (
             <div className="labcard">
-                <Button
-                    type={Button.TYPE.NORMAL}
-                    iconType={Button.ICON_TYPE.DATAVIZ__DATAVIZ__DASHBOARD }
-                onClick={(e) => { this.openDetails(e); }} >
+            <button
+                id={labName}
+                onClick={(e) => { this.openDetails(e,{labName}); }} >
                 {labName}
-            </Button >
+            </button >
                 <h3>{labTitle}</h3>
                 <p>{labDescription}</p>
             </div>

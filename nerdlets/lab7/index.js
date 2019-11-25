@@ -1,21 +1,23 @@
 import React from 'react';
-import { Grid, GridItem } from 'nr1';
-import { NrqlQuery, Spinner, LineChart, BlockText, PlatformStateContext, NerdletStateContext, EntityByGuidQuery } from 'nr1';
-import { generateForecastData } from './utils';
+import { AutoSizer, Spinner, HeadingText, EntityByGuidQuery, PlatformStateContext, NerdletStateContext } from 'nr1';
+import Lab7 from './main';
 
-export default class MyNerdlet extends React.Component {
-
+export default class Wrapper extends React.PureComponent {
     constructor(props) {
         super(props);
-        console.debug(props); //eslint-disable-line
+        this.state = {
+            entityGuid: 'MTAzODI4N3xBUE18QVBQTElDQVRJT058MTEwNzQ2NDc',
+            height: 90,
+            width: 90
+        }
     }
 
     render() {
         return <PlatformStateContext.Consumer>
             {(platformUrlState) => (
                 <NerdletStateContext.Consumer>
-                    {(nerdletUrlState) => (
-                        <EntityByGuidQuery entityGuid={nerdletUrlState.entityGuid}>
+                    {(nerdletUrlState) => {
+                        return (<EntityByGuidQuery entityGuid={this.state.entityGuid}>
                             {({ data, loading, error }) => {
                                 console.debug("EntityByGuidQuery", [loading, data, error]); //eslint-disable-line
                                 if (loading) {
@@ -25,27 +27,18 @@ export default class MyNerdlet extends React.Component {
                                     return <BlockText>{error.message}</BlockText>
                                 }
                                 const entity = data.entities[0];
-                                const { accountId } = entity;
-                                const { duration } = platformUrlState.timeRange;
-                                const durationInMinutes = duration / 1000 / 60;
-                                return <NrqlQuery accountId={accountId} query={`SELECT uniqueCount(session) FROM PageView WHERE appName = '${entity.name.replace("'", "\\'")}' TIMESERIES SINCE ${durationInMinutes} MINUTES AGO COMPARE WITH ${durationInMinutes * 2} MINUTES AGO`}>
-                                    {({ loading, data, error }) => {
-                                        console.debug("NrqlQuery", [loading, data, error]); //eslint-disable-line
-                                        if (loading) {
-                                            return <Spinner fillContainer />;
-                                        }
-                                        if (error) {
-                                            return <BlockText>{error.message}</BlockText>;
-                                        }
-                                        data.push(generateForecastData(data[0]));
-                                        return <LineChart data={data} className="chart" />;
-                                    }}
-                                </NrqlQuery>
+                                return <Lab7
+                                    launcherUrlState={platformUrlState}
+                                    nerdletUrlState={nerdletUrlState}
+                                    height={this.state.height}
+                                    width={this.state.width}
+                                    entity={entity}
+                                />
                             }}
-                        </EntityByGuidQuery>
-                    )}
+                        </EntityByGuidQuery>)
+                    }}
                 </NerdletStateContext.Consumer>
             )}
-        </PlatformStateContext.Consumer>;
+        </PlatformStateContext.Consumer>
     }
 }

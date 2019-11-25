@@ -1,5 +1,5 @@
 import React from 'react';
-import { TableChart, Stack, StackItem, ChartGroup, LineChart, ScatterChart } from 'nr1';
+import {HeadingText, TableChart, Stack, StackItem, ChartGroup, LineChart, ScatterChart } from 'nr1';
 
 // https://docs.newrelic.com/docs/new-relic-programmable-platform-introduction
 
@@ -9,10 +9,9 @@ export default class Lab1Nerdlet extends React.Component {
         super(props);
         this.accountId = 1038287;
         this.state = {
-                appId: null,
+            appId: null,
             appName: null
         };
-        console.debug("Nerdlet constructor", this); //eslint-disable-line
     }
 
     setApplication(inAppId, inAppName) {
@@ -25,8 +24,10 @@ export default class Lab1Nerdlet extends React.Component {
         const tCountNrql = `SELECT count(*) FROM Transaction WHERE appId = ${appId} TIMESERIES`;
         const apdexNrql = `SELECT apdex(duration) FROM Transaction WHERE appId = ${appId} TIMESERIES`
         //return the JSX we're rendering
-        return (
-            <ChartGroup>
+        return (<ChartGroup>
+                <HeadingText>
+                    Lab 1: Working with Chart components
+                </HeadingText>
                 <Stack
                     fullWidth
                     verticalType={Stack.VERTICAL_TYPE.FILL}

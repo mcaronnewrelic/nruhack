@@ -1,5 +1,5 @@
 import React from 'react';
-import { TableChart, Stack, StackItem, ChartGroup, LineChart, ScatterChart, Button, navigation, nerdlet, PlatformStateContext, NerdletStateContext } from 'nr1';
+import { HeadingText, TableChart, Stack, StackItem, ChartGroup, LineChart, ScatterChart, Button, navigation, nerdlet, PlatformStateContext, NerdletStateContext } from 'nr1';
 
 export default class Lab2Nerdlet extends React.Component {
 
@@ -37,6 +37,9 @@ export default class Lab2Nerdlet extends React.Component {
                     const { duration } = platformUrlState.timeRange;
                     const since = ` SINCE ${duration / 60 / 1000} MINUTES AGO`;
                     return (<ChartGroup>
+                        <HeadingText>
+                            Lab 2: navigation and timeRange
+                        </HeadingText>
                         <Stack
                             verticalType={Stack.VERTICAL_TYPE.FILL}
                             directionType={Stack.DIRECTION_TYPE.VERTICAL}
